@@ -5,10 +5,10 @@ a{
   text-decoration:none;
   color:green;
   font-size:20px;
-  margin-top:10px;
 }
 img{
   border:dashed;
+  margin-bottom:10px;
 }
 div{
   width:500px;
