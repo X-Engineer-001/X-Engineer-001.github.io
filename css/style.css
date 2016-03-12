@@ -13,5 +13,7 @@ img{
 div{
   width:480px;
   border:solid;
-  padding:5px;
+  padding-left:5px;
+  padding-top:5px;
+  padding-bottom:5px;
 }
