@@ -1,9 +1,7 @@
 h1{
   color:blue;
+  font.weight:10px;
 }
 a{
-  color:purple;
-}
-a.purple {
-  color:purple;
+  color:green;
 }
