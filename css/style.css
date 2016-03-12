@@ -8,10 +8,10 @@ a{
 }
 img{
   border:dashed;
-  margin-bottom:10px;
+  margin-bottom:5px;
 }
 div{
-  width:500px;
+  width:480px;
   border:solid;
-  padding:20px;
+  padding:5px;
 }
