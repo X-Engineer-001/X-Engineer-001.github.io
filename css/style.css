@@ -10,13 +10,13 @@ div{
   border:solid;
   padding:5px;
 }
-p{
+.btn{
   background-color:#00FF00;
   margin-top:0px;
   margin-bottom:0px;
   font-size:20px;
 }
-p:hover{
+.btn:hover{
   background-color:#32CD32;
   font-size:15px;
 }
