@@ -4,8 +4,8 @@ h1{
 }
 img{
   border:dashed;
-  margin-bottom:7px;
-  margin-top:5px;
+  margin-bottom:5px;
+  margin-top:7px;
 }
 .works{
   width:476px;
@@ -27,5 +27,5 @@ body{
   padding-top:50px;
 }
 a:hover~img{
-  margin-bottom:5px;
+  margin-top:5px;
 }
