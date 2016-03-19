@@ -1,11 +1,12 @@
 h1{
   color:blue;
+  margin-top:2px;
 }
 img{
   border:dashed;
   margin-bottom:5px;
 }
-div{
+.works{
   width:476px;
   border:solid;
   padding:5px;
@@ -23,4 +24,7 @@ div{
 }
 body{
   padding-top:50px;
+}
+.btn:hover~h1{
+  margin-top:0px;
 }
