@@ -1,15 +1,6 @@
 h1{
   color:blue;
 }
-a{
-  text-decoration:none;
-  background-color:#00FF00;
-  font-size:20px;
-}
-a:hover{
-  background-color:#32CD32;
-  font-size:15px;
-}
 img{
   border:dashed;
   margin-bottom:5px;
@@ -20,6 +11,12 @@ div{
   padding:5px;
 }
 p{
+  background-color:#00FF00;
   margin-top:0px;
   margin-bottom:0px;
+  font-size:20px;
+}
+p:hover{
+  background-color:#32CD32;
+  font-size:15px;
 }
