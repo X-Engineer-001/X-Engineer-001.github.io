@@ -3,8 +3,12 @@ h1{
 }
 a{
   text-decoration:none;
-  color:green;
+  color:#00FF00;
   font-size:20px;
+}
+a:hover{
+  color:#32CD32;
+  font-size:15px;
 }
 img{
   border:dashed;
