@@ -15,11 +15,9 @@ div{
   margin-top:0px;
   margin-bottom:0px;
   font-size:20px;
+  color:#FFFFFF;
 }
 .btn:hover{
   background-color:#32CD32;
   font-size:21px;
-}
-.btn:hover + div{
-  padding-bottom:3;
 }
