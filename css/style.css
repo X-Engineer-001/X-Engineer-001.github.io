@@ -14,8 +14,8 @@ a:-webkit-any-link{
 .navbar{
   min-height:30;
 }
-.fix{
-  position:fixed;
+.absolute{
+  position:absolute;
   top:30;
   left:0;
 }
