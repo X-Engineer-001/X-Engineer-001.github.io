@@ -16,6 +16,6 @@ a:-webkit-any-link{
 }
 .absolute{
   position:absolute;
-  top:30;
+  top:0;
   left:0;
 }
