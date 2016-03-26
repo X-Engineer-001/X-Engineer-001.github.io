@@ -11,6 +11,12 @@ a:hover{
 a:-webkit-any-link{
   text-decoration:none;
 }
+p:{
+  font-size:20;
+}
+p:hover{
+  font-size:21;
+}
 .navbar{
   min-height:30;
 }
