@@ -13,14 +13,11 @@ img{
   padding:5px;
 }
 .btn{
-  background-color:#ADFF2F;
   margin-top:0px;
   margin-bottom:0px;
   font-size:20px;
-  color:#000000;
 }
 .btn:hover{
-  background-color:#32CD32;
   font-size:21px;
 }
 body{
