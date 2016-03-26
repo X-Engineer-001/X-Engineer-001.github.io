@@ -32,8 +32,4 @@ a:hover~img{
 .navbar{
   min-height:30;
 }
-.col-md-2{
-  position:fixed;
-  top:30;
-  left:0;
-}
+
