@@ -34,6 +34,6 @@ a:hover~img{
 }
 .col-md-2{
   position:fixed;
-  top:0;
+  top:30;
   left:0;
 }
