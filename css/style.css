@@ -29,9 +29,6 @@ a:hover{
 a:-webkit-any-link{
   text-decoration:none;
 }
-a:hover~img{
-  margin-top:4px;
-}
 .navbar{
   min-height:30;
 }
