@@ -26,10 +26,10 @@
           
         }
         $(".id").click(function(){
-          student=studentCollection.find({_id:$(this).data-id});
+          student=studentCollection.find({_id:$(this).data("id")});
         })
         $(".name").click(function(){
-          student=studentCollection.find({_id:$(this).data-id});
+          student=studentCollection.find({_id:$(this).data("id")});
         })
       });
     </script>
