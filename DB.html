@@ -25,7 +25,7 @@
           $("tbody").append("<tr><td class='id'>"+(i+1)+"</td><td class='name'>"+students[i].name+"</td></tr>");
         }
         $(".id").click(function(){
-          student=students[$(this).text-1];
+          student=students[($(this).text/1)-1];
         })
         $(".name").click(function(){
           student=studentCollection.find({name:$(this).text});
