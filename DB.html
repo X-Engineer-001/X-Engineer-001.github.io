@@ -18,10 +18,11 @@
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
       var studentCollection = db.collection('students');
-      studentCollection.load();
-      for(var i=0;i<studentCollection.length;i++){
-        $("tbody").append("<tr><td>"+i+1+"</td><td>"+studentCollection[i].name+"</td></tr>");
-      }
+      studentCollection.load(function(){
+        for(var i=0;i<studentCollection.length;i++){
+          $("tbody").append("<tr><td>"+i+1+"</td><td>"+studentCollection[i].name+"</td></tr>");
+        }
+      });
     </script>
   </body>
 </html>
