@@ -21,7 +21,7 @@
       studentCollection.load(function(){
         var students=studentCollection.find();
         for(var i=0;i<students.length;i++){
-          $("tbody").append("<tr><td>"+i+1+"</td><td>"+students[i].name+"</td></tr>");
+          $("tbody").append("<tr><td>"+(i+1)+"</td><td>"+students[i].name+"</td></tr>");
         }
       });
     </script>
