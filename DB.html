@@ -12,8 +12,6 @@
         </tr>
       </thead>
       <tbody>
-        <tr id="contents">
-        </tr>
       </tbody>
     </table>
     <script>
@@ -22,8 +20,7 @@
       var studentCollection = db.collection('students');
       studentCollection.load();
       for(var i=0;i<studentCollection.length;i++){
-        $("#contents").append("<td>i+1</td>");
-        $("#contents").append("<td>studentCollection[i].name</td>");
+        $("tbody").append("<tr><td>i+1</td><td>studentCollection[i].name</td></tr>");
       }
     </script>
   </body>
