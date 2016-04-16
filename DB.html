@@ -23,7 +23,6 @@
         var students=studentCollection.find();
         for(var i=0;i<students.length;i++){
           $("tbody").append("<tr><td class='id' data-id='"+students[i].id+"'>"+(i+1)+"</td><td class='name' data-id='"+students[i].id+"'>"+students[i].name+"</td></tr>");
-          
         }
         $(".id").click(function(){
           student=studentCollection.find({_id:$(this).data("id")});
