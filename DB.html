@@ -3,5 +3,10 @@
     <script type="text/javascript" src="js/fdb.min.js"></script>
   </head>
   <body>
+    <script>
+      var fdb=new ForerunnerDB();
+      var db=fdb.db("DB");
+      var studentCollection = db.collection('students');
+    </script>
   </body>
 </html>
