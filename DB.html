@@ -1,5 +1,7 @@
 <html>
   <head>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
     <script type="text/javascript" src="js/fdb-all.min.js"></script>
   </head>
@@ -14,6 +16,21 @@
       <tbody>
       </tbody>
     </table>
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
@@ -26,9 +43,18 @@
         }
         $(".id").click(function(){
           student=studentCollection.find({_id:$(this).data("id")});
+          $(.modaltext).remove();
+          $(#myModal).append("<p class='modaltext'>id:"student._id"</p>");
+          $(#myModal).append("<p class='modaltext'>姓名:"student.name"</p>");
+          $(#myModal).append("<p class='modaltext'>年齡:"student.age"</p>");
+          $(#myModal).modal('show');
         })
         $(".name").click(function(){
           student=studentCollection.find({_id:$(this).data("id")});
+          $(#myModal).append("<p class='modaltext'>id:"student._id"</p>");
+          $(#myModal).append("<p class='modaltext'>姓名:"student.name"</p>");
+          $(#myModal).append("<p class='modaltext'>年齡:"student.age"</p>");
+          $(#myModal).modal('show');
         })
       });
     </script>
