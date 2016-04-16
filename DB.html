@@ -43,7 +43,7 @@
         }
         $(".id").click(function(){
           student=studentCollection.find({_id:$(this).data("id")});
-          $(.modaltext).remove();
+          $(".modaltext").remove();
           $(#myModal).append("<p class='modaltext'>id:"student._id"</p>");
           $(#myModal).append("<p class='modaltext'>姓名:"student.name"</p>");
           $(#myModal).append("<p class='modaltext'>年齡:"student.age"</p>");
@@ -51,6 +51,7 @@
         })
         $(".name").click(function(){
           student=studentCollection.find({_id:$(this).data("id")});
+          $(".modaltext").remove();
           $(#myModal).append("<p class='modaltext'>id:"student._id"</p>");
           $(#myModal).append("<p class='modaltext'>姓名:"student.name"</p>");
           $(#myModal).append("<p class='modaltext'>年齡:"student.age"</p>");
