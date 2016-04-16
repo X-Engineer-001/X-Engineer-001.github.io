@@ -4,10 +4,26 @@
     <script type="text/javascript" src="js/fdb-all.min.js"></script>
   </head>
   <body>
+    <table>
+      <thead>
+        <tr>
+          <td>id</td>
+          <td>姓名</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="contents">
+        </tr>
+      </tbody>
+    </table>
     <script>
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
       var studentCollection = db.collection('students');
+      for(var i=0;i<studentCollection.length;i++){
+        $("#contents").append("<td>i+1</td>");
+        $("#contents").append("<td>studentCollection[i].name</td>");
+      }
     </script>
   </body>
 </html>
