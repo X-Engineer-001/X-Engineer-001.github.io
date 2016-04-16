@@ -18,11 +18,18 @@
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
       var studentCollection = db.collection('students');
+      var student={};
       studentCollection.load(function(){
         var students=studentCollection.find();
         for(var i=0;i<students.length;i++){
-          $("tbody").append("<tr><td>"+(i+1)+"</td><td>"+students[i].name+"</td></tr>");
+          $("tbody").append("<tr><td class="id">"+(i+1)+"</td><tdclass="name">"+students[i].name+"</td></tr>");
         }
+        $(".id").click(function(){
+          student=students[$(this).text-1];
+        })
+        $(".name").click(function(){
+          student=studentCollection.find({name:$(this).text});
+        })
       });
     </script>
   </body>
