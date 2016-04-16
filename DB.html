@@ -20,6 +20,7 @@
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
       var studentCollection = db.collection('students');
+      studentCollection.load();
       for(var i=0;i<studentCollection.length;i++){
         $("#contents").append("<td>i+1</td>");
         $("#contents").append("<td>studentCollection[i].name</td>");
