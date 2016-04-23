@@ -59,8 +59,8 @@
       var student={};
       $(".editok").click(function(){
         var newData = {
-          name:$(.nameedit).val(),
-          age:$(.ageedit).val()
+          name:$(".nameedit").val(),
+          age:$(".ageedit").val()
         };
         studentCollection.updateById("$('.editok').data('id')",newData);
         $(".edit").modal('hide');
