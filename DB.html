@@ -75,7 +75,7 @@
           }
         }
         setInterval(show,1000);
-        $(".id").click(function(){
+        $("body").on("click",".id",function(){
           array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           $(".informationtext").remove();
@@ -84,7 +84,7 @@
           $(".informationbody").append("<p class='informationtext'>age:"+student.age+"</p>");
           $(".information").modal('show');
         })
-        $(".name").click(function(){
+        $("body").on("click",".name",function(){
           array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           $(".informationtext").remove();
