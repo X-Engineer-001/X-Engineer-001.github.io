@@ -71,9 +71,12 @@
       }
       studentCollection.load(function(){
         var students=studentCollection.find();
-        for(var i=0;i<students.length;i++){
-          $("tbody").append("<tr><td class='id' data-id='"+students[i]._id+"'>"+(i+1)+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
+        function show(){
+          for(var i=0;i<students.length;i++){
+            $("tbody").append("<tr><td class='id' data-id='"+students[i]._id+"'>"+(i+1)+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
+          }
         }
+        setInterval(show,1000);
         $(".id").click(function(){
           array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
