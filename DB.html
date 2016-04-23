@@ -58,11 +58,11 @@
       var studentCollection = db.collection('students');
       var student={};
       $(".editok").click(function(){
-        console.log("test");
         var newData = {
           name:$(".nameedit").val(),
           age:$(".ageedit").val()
         };
+        console.log(newData);
         studentCollection.updateById("$('.editok').data('id')",newData);
         $(".edit").modal('hide');
       });
