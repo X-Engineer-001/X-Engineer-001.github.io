@@ -55,6 +55,7 @@
     <script>
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
+      var id=0;
       var studentCollection = db.collection('students');
       var student={};
       $(".editok").click(function(){
@@ -62,8 +63,7 @@
           name:$(".nameedit").val(),
           age:$(".ageedit").val()
         };
-        console.log(newData);
-        studentCollection.updateById("$('.editok').data('id')",newData);
+        studentCollection.updateById("id",newData);
         $(".edit").modal('hide');
       });
       function save(){
@@ -100,7 +100,7 @@
           $(".editbody").append("<input type='text' class='edittext nameedit' value='"+student.name+"'></p>");
           $(".editbody").append("<p class='edittext'>age</p>");
           $(".editbody").append("<input type='text' class='edittext ageedit' value='"+student.age+"'></p>");
-          $(".editok").css("data-id","student._id");
+          id=$(this).data("id");
           $(".edit").modal('show');
         })
       setInterval(save,1000);
