@@ -92,7 +92,7 @@
           $(".informationbody").append("<p class='informationtext'>age:"+student.age+"</p>");
           $(".information").modal('show');
         })
-        $(".btn-warning").click(function(){
+        $("body").on("click",".btn-warning",function(){
           array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           $(".edittext").remove();
