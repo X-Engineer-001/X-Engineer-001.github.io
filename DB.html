@@ -9,7 +9,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <td>id</td>
+          <td>number</td>
           <td>name</td>
           <td>operation</td>
         </tr>
@@ -57,7 +57,7 @@
       var db=fdb.db("DB");
       var studentCollection = db.collection('students');
       var student={};
-      $(".editok").click(function(){
+      $(".editok").click(function text(){
         var newData = {
           name:$(".nameedit").val(),
           age:$(".ageedit").val()
