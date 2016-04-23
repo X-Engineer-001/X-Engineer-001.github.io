@@ -67,6 +67,7 @@
       studentCollection.load(function(){
         var students=studentCollection.find();
         function show(){
+          students=studentCollection.find();
           $("tbody *").remove();
           $("tbody").append("<tr><td><button type='button' class='btn btn-success edittext'>add</button></td></tr>");
           for(var i=0;i<students.length;i++){
