@@ -70,7 +70,7 @@
       var student={};
       $(".editok").click(function(){
         var newData = {
-          number:$(".numberedit").val(),
+          number:$(".numberedit").val()/1,
           name:$(".nameedit").val(),
           age:$(".ageedit").val()
         };
@@ -79,7 +79,7 @@
       });
       $(".addok").click(function(){
         studentCollection.insert({
-          number:$(".numberadd").val(),
+          number:$(".numberadd").val()/1,
           name:$(".nameadd").val(),
           age:$(".ageadd").val()
         });
