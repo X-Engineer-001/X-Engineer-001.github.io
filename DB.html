@@ -47,6 +47,21 @@
         </div>
       </div>
     </div>
+    <div id="myModal" class="modal fade add" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">EDIT</h4>
+          </div>
+          <div class="modal-body addbody">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success addok">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
@@ -55,31 +70,41 @@
       var student={};
       $(".editok").click(function(){
         var newData = {
+          number:$(".numberedit").val(),
           name:$(".nameedit").val(),
           age:$(".ageedit").val()
         };
         studentCollection.updateById(id,newData);
         $(".edit").modal('hide');
       });
+      $(".addok").click(function(){
+        studentCollection.insert({
+          number:$(".numberadd").val(),
+          name:$(".nameadd").val(),
+          age:$(".ageadd").val()
+        });
+        $(".add").modal('hide');
+      });
       function save(){
         studentCollection.save();
       }
       studentCollection.load(function(){
-        var students=studentCollection.find();
+        var students=studentCollection.find($orderBy:{number:1});
         function show(){
           students=studentCollection.find();
           $("tbody *").remove();
-          $("tbody").append("<tr><td><button type='button' class='btn btn-success add'>add</button></td></tr>");
+          $("tbody").append("<tr><td><button type='button' class='btn btn-success'>add</button></td></tr>");
           for(var i=0;i<students.length;i++){
-            $("tbody").append("<tr><td class='id' data-id='"+students[i]._id+"'>"+(i+1)+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
+            $("tbody").append("<tr><td class='number' data-id='"+students[i]._id+"'>"+students[i].number+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
           }
         }
         setInterval(show,1000);
-        $("body").on("click",".id",function(){
+        $("body").on("click",".number",function(){
           array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
+          $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
           $(".informationbody").append("<p class='informationtext'>name:"+student.name+"</p>");
           $(".informationbody").append("<p class='informationtext'>age:"+student.age+"</p>");
           $(".information").modal('show');
@@ -89,6 +114,7 @@
           student=array[0];
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
+          $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
           $(".informationbody").append("<p class='informationtext'>name:"+student.name+"</p>");
           $(".informationbody").append("<p class='informationtext'>age:"+student.age+"</p>");
           $(".information").modal('show');
@@ -98,11 +124,23 @@
           student=array[0];
           $(".edittext").remove();
           $(".editbody").append("<p class='edittext'>name</p>");
+          $(".editbody").append("<input type='text' class='edittext numberedit' value='"+student.number+"'></p>");
+          $(".editbody").append("<p class='edittext'>name</p>");
           $(".editbody").append("<input type='text' class='edittext nameedit' value='"+student.name+"'></p>");
           $(".editbody").append("<p class='edittext'>age</p>");
           $(".editbody").append("<input type='text' class='edittext ageedit' value='"+student.age+"'></p>");
           id=$(this).data("id");
           $(".edit").modal('show');
+        })
+        $("body").on("click",".btn-success",function(){
+          $(".addtext").remove();
+          $(".addbody").append("<p class='edittext'>name</p>");
+          $(".addbody").append("<input type='text' class='edittext numberadd' value='0'></p>");
+          $(".addbody").append("<p class='addtext'>name</p>");
+          $(".addbody").append("<input type='text' class='addtext nameadd' value='name'></p>");
+          $(".addbody").append("<p class='addtext'>age</p>");
+          $(".addbody").append("<input type='text' class='addtext ageadd' value='age'></p>");
+          $(".add").modal('show');
         })
       setInterval(save,1000);
       });
