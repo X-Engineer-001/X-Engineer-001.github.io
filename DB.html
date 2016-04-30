@@ -93,7 +93,7 @@
         function show(){
           students=studentCollection.find();
           $("tbody *").remove();
-          $("tbody").append("<tr><td><button type='button' class='btn btn-success'>add</button></td></tr>");
+          $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button></td></tr>");
           for(var i=0;i<students.length;i++){
             $("tbody").append("<tr><td class='number' data-id='"+students[i]._id+"'>"+students[i].number+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
           }
@@ -132,7 +132,7 @@
           id=$(this).data("id");
           $(".edit").modal('show');
         })
-        $("body").on("click",".btn-success",function(){
+        $("body").on("click",".addbtn",function(){
           $(".addtext").remove();
           $(".addbody").append("<p class='edittext'>number</p>");
           $(".addbody").append("<input type='text' class='edittext numberadd' value='0'></p>");
