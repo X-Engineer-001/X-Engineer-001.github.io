@@ -95,6 +95,7 @@
         for(var i=0;i<students.length;i++){
           $("tbody").append("<tr><td class='number' data-id='"+students[i]._id+"'>"+students[i].number+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
         }
+        $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button></td></tr>");
         function show(){
           students=studentCollection.find({},{$orderBy:{number:1}});
           $("tbody *").remove();
@@ -102,6 +103,7 @@
           for(var i=0;i<students.length;i++){
             $("tbody").append("<tr><td class='number' data-id='"+students[i]._id+"'>"+students[i].number+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
           }
+          $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button></td></tr>");
         }
         setInterval(show,1000);
         $("body").on("click",".number",function(){
@@ -161,6 +163,7 @@
             for(var i=0;i<students.length;i++){
               $("tbody").append("<tr><td class='number' data-id='"+students[i]._id+"'>"+students[i].number+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
             }
+            $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button></td></tr>");
           }
         })
       setInterval(save,1000);
