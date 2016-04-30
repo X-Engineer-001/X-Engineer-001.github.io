@@ -123,7 +123,7 @@
           array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           $(".edittext").remove();
-          $(".editbody").append("<p class='edittext'>name</p>");
+          $(".editbody").append("<p class='edittext'>number</p>");
           $(".editbody").append("<input type='text' class='edittext numberedit' value='"+student.number+"'></p>");
           $(".editbody").append("<p class='edittext'>name</p>");
           $(".editbody").append("<input type='text' class='edittext nameedit' value='"+student.name+"'></p>");
@@ -134,7 +134,7 @@
         })
         $("body").on("click",".btn-success",function(){
           $(".addtext").remove();
-          $(".addbody").append("<p class='edittext'>name</p>");
+          $(".addbody").append("<p class='edittext'>number</p>");
           $(".addbody").append("<input type='text' class='edittext numberadd' value='0'></p>");
           $(".addbody").append("<p class='addtext'>name</p>");
           $(".addbody").append("<input type='text' class='addtext nameadd' value='name'></p>");
