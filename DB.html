@@ -89,7 +89,7 @@
         studentCollection.save();
       }
       studentCollection.load(function(){
-        var students=studentCollection.find($orderBy:{number:1});
+        var students=studentCollection.find({$orderBy:{number:1}});
         function show(){
           students=studentCollection.find();
           $("tbody *").remove();
