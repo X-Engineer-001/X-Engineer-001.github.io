@@ -70,6 +70,13 @@
             <h4 class="modal-title">SEARCH</h4>
           </div>
           <div class="modal-body searchbody">
+            <p class='searchtext'>number</p>
+            <input type='text' class='searchtext numbersearch' value='' />
+            <p class='searchtext'>name</p>
+            <input type='text' class='searchtext namesearch' value='' />
+            <p class='searchtext'>age</p>
+            <input type='text' class='searchtext lteagesearch' value='' />～
+            <input type='text' class='searchtext gteagesearch' display='inline' value='' />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success searchok">OK</button>
@@ -78,6 +85,9 @@
       </div>
     </div>
     <script>
+      var numbersearch;
+      var namesearch;
+      var agesearch;
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
       var id=0;
@@ -101,12 +111,36 @@
         });
         $(".add").modal('hide');
       });
+      $(".searchok").click(function(){
+        if($(".numbersearch").val()==""){
+          numbersearch=null:
+        }else{
+          numbersearch=$(".numbersearch").val();
+        }
+        if($(".namesearch").val()==""){
+          namesearch=null:
+        }else{
+          namesearch=$(".namesearch").val();
+        }
+        if($(".lteagesearch").val()=="")
+          lteagesearch=null:
+        }else{
+          lteagesearch=$(".lteagesearch").val();
+        }
+        if($(".gteagesearch").val()=="")
+          gteagesearch=null:
+        }else{
+          gteagesearch=$(".gteagesearch").val();
+        }
+        $(".search").modal('hide');
+      });
       function save(){
         studentCollection.save();
       }
       studentCollection.load(function(){
         function show(){
-          students=studentCollection.find({},{$orderBy:{number:1}});
+          if($(".numbersearch").val()==""&&$(".namesearch").val()==""&&){
+            students=studentCollection.find({number:numbersearch,name:namesearch.age:{lte:lteagesearch,gte:gteagesearch}},{$orderBy:{number:1}});
           $("tbody *").remove();
           $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button>&nbsp&nbsp<button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
           for(var i=0;i<students.length;i++){
@@ -171,14 +205,6 @@
           }
         })
         $("body").on("click",".searchbtn",function(){
-          $(".searchtext").remove();
-          $(".searchbody").append("<p class='searchtext'>number</p>");
-          $(".searchbody").append("<input type='text' class='searchtext numbersearch' value='0' />");
-          $(".searchbody").append("<p class='searchtext'>name</p>");
-          $(".searchbody").append("<input type='text' class='searchtext namesearch' value='name' />");
-          $(".searchbody").append("<p class='searchtext'>age</p>");
-          $(".searchbody").append("<input type='text' class='searchtext lteagesearch' value='0' />～");
-          $(".searchbody").append("<input type='text' class='searchtext gteagesearch' display='inline' value='100' />");
           $(".search").modal('show');
         })
       setInterval(save,1000);
