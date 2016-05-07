@@ -115,10 +115,13 @@
           temporarysearchs.number=$(".numbersearch").val();
         }if($(".namesearch").val()!=""){
           temporarysearchs.name=$(".namesearch").val();
-        }if($(".lteagesearch").val()!=""){
-          temporarysearchs.age.$lte=$(".lteagesearch").val();
-        }if($(".gteagesearch").val()!=""){
-          temporarysearchs.age.$gte=$(".gteagesearch").val();
+        }if($(".lteagesearch").val()!=""||$(".gteagesearch").val()!=""){
+          temporarysearchs.age={};
+          if($(".lteagesearch").val()!=""){
+            temporarysearchs.age.$lte=$(".lteagesearch").val();
+          }if($(".gteagesearch").val()!=""){
+            temporarysearchs.age.$gte=$(".gteagesearch").val();
+          }
         }
         searchs=temporarysearchs;
         $(".search").modal('hide');
