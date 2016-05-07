@@ -139,7 +139,7 @@
       }
       studentCollection.load(function(){
         function show(){
-          students=studentCollection.find({number:numbersearch,name:namesearch.age:{lte:lteagesearch,gte:gteagesearch}},{$orderBy:{number:1}});
+          students=studentCollection.find({number:numbersearch,name:namesearch,age:{lte:lteagesearch,gte:gteagesearch}},{$orderBy:{number:1}});
           $("tbody *").remove();
           $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button>&nbsp&nbsp<button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
           for(var i=0;i<students.length;i++){
