@@ -86,7 +86,7 @@
       var students=studentCollection.find({},{$orderBy:{number:1}});
       $(".editok").click(function(){
         var newData = {
-          number:$(".numberedit").val()/1,
+          number:$(".numberedit").val(),
           name:$(".nameedit").val(),
           age:$(".ageedit").val()
         };
@@ -95,7 +95,7 @@
       });
       $(".addok").click(function(){
         studentCollection.insert({
-          number:$(".numberadd").val()/1,
+          number:$(".numberadd").val(),
           name:$(".nameadd").val(),
           age:$(".ageadd").val()
         });
@@ -108,13 +108,11 @@
         function show(){
           students=studentCollection.find({},{$orderBy:{number:1}});
           $("tbody *").remove();
-          $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button></td></tr>");
-          $("tbody").append("<tr><td><button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
+          $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button><button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
           for(var i=0;i<students.length;i++){
             $("tbody").append("<tr><td class='number' data-id='"+students[i]._id+"'>"+students[i].number+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
           }
-          $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button></td></tr>");
-          $("tbody").append("<tr><td><button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
+          $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button><button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
         }
         show();
         setInterval(show,1000);
