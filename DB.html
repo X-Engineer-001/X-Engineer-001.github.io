@@ -52,12 +52,27 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">EDIT</h4>
+            <h4 class="modal-title">ADD</h4>
           </div>
           <div class="modal-body addbody">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success addok">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="myModal" class="modal fade search" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">SEARCH</h4>
+          </div>
+          <div class="modal-body addbody">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success searchok">OK</button>
           </div>
         </div>
       </div>
@@ -128,22 +143,22 @@
           student=array[0];
           $(".edittext").remove();
           $(".editbody").append("<p class='edittext'>number</p>");
-          $(".editbody").append("<input type='text' class='edittext numberedit' value='"+student.number+"'></p>");
+          $(".editbody").append("<input type='text' class='edittext numberedit' value='"+student.number+"' />");
           $(".editbody").append("<p class='edittext'>name</p>");
-          $(".editbody").append("<input type='text' class='edittext nameedit' value='"+student.name+"'></p>");
+          $(".editbody").append("<input type='text' class='edittext nameedit' value='"+student.name+"' />");
           $(".editbody").append("<p class='edittext'>age</p>");
-          $(".editbody").append("<input type='text' class='edittext ageedit' value='"+student.age+"'></p>");
+          $(".editbody").append("<input type='text' class='edittext ageedit' value='"+student.age+"' />");
           id=$(this).data("id");
           $(".edit").modal('show');
         })
         $("body").on("click",".addbtn",function(){
           $(".addtext").remove();
           $(".addbody").append("<p class='addtext'>number</p>");
-          $(".addbody").append("<input type='text' class='addtext numberadd' value='0'></p>");
+          $(".addbody").append("<input type='text' class='addtext numberadd' value='0' />");
           $(".addbody").append("<p class='addtext'>name</p>");
-          $(".addbody").append("<input type='text' class='addtext nameadd' value='name'></p>");
+          $(".addbody").append("<input type='text' class='addtext nameadd' value='name' />");
           $(".addbody").append("<p class='addtext'>age</p>");
-          $(".addbody").append("<input type='text' class='addtext ageadd' value='age'></p>");
+          $(".addbody").append("<input type='text' class='addtext ageadd' value='18' />");
           $(".add").modal('show');
         })
         $("body").on("click",".btn-danger",function(){
@@ -156,6 +171,18 @@
             });
             show();
           }
+        })
+        $("body").on("click",".searchbtn",function(){
+          $(".searchtext").remove();
+          $(".searchbody").append("<p class='searchtext'>number</p>");
+          $(".searchbody").append("<input type='text' class='searchtext numbersearch' value='0' />");
+          $(".searchbody").append("<p class='searchtext'>name</p>");
+          $(".searchbody").append("<input type='text' class='searchtext namesearch' value='name' />");
+          $(".searchbody").append("<p class='searchtext'>age</p>");
+          $(".searchbody").append("<input type='text' class='searchtext lteagesearch' value='0' />");
+          $(".searchbody").append("<p class='searchtext' display='inline'>～</p>");
+          $(".searchbody").append("<input type='text' class='searchtext gteagesearch' display='inline' value='100' />");
+          $(".search").modal('show');
         })
       setInterval(save,1000);
       });
