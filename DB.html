@@ -85,10 +85,7 @@
       </div>
     </div>
     <script>
-      var numbersearch;
-      var namesearch;
-      var lteagesearch;
-      var gteagesearch;
+      var searchs={};
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
       var id=0;
@@ -113,26 +110,17 @@
         $(".add").modal('hide');
       });
       $(".searchok").click(function(){
-        if($(".numbersearch").val()==""){
-          numbersearch=null;
-        }else{
-          numbersearch=$(".numbersearch").val();
+        var temporarysearchs={};
+        if($(".numbersearch").val()!=""){
+          temporarysearchs.number=$(".numbersearch").val();
+        }if($(".numbersearch").val()!=""){
+          temporarysearchs.name=$(".nameearch").val();
+        }if($(".lteagesearch").val()!=""){
+          temporarysearchs.age.$lte=$(".lteagesearch").val();
+        }if($(".gteagesearch").val()!=""){
+          temporarysearchs.age.$gte=$(".lteagesearch").val();
         }
-        if($(".namesearch").val()==""){
-          namesearch=null;
-        }else{
-          namesearch=$(".namesearch").val();
-        }
-        if($(".lteagesearch").val()==""){
-          lteagesearch=null;
-        }else{
-          lteagesearch=$(".lteagesearch").val();
-        }
-        if($(".gteagesearch").val()==""){
-          gteagesearch=null;
-        }else{
-          gteagesearch=$(".gteagesearch").val();
-        }
+        searchs=temporarysearchs;
         $(".search").modal('hide');
       });
       function save(){
@@ -140,7 +128,7 @@
       }
       studentCollection.load(function(){
         function show(){
-          students=studentCollection.find({number:numbersearch,name:namesearch,age:{$lte:lteagesearch,$gte:gteagesearch}},{$orderBy:{number:1}});
+          students=studentCollection.find(searchs,{$orderBy:{number:1}});
           $("tbody *").remove();
           $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button>&nbsp&nbsp<button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
           for(var i=0;i<students.length;i++){
