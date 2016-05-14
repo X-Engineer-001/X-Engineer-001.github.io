@@ -89,7 +89,6 @@
     </div>
     <script>
       var searchs={};
-      var classes;
       var fdb=new ForerunnerDB();
       var db=fdb.db("DB");
       var id=0;
@@ -115,29 +114,11 @@
         });
         $(".add").modal('hide');
       });
-      $(".searchok").click(function(){
-        var temporarysearchs={};
-        if($(".classsearch").val()!=""){
-          temporarysearchs.class=$(".classsearch").val();
-        }if($(".numbersearch").val()!=""){
-          temporarysearchs.number=$(".numbersearch").val();
-        }if($(".namesearch").val()!=""){
-          temporarysearchs.name=$(".namesearch").val();
-        }if($(".lteagesearch").val()!=""||$(".gteagesearch").val()!=""){
-          temporarysearchs.age={};
-          if($(".lteagesearch").val()!=""){
-            temporarysearchs.age.$lte=$(".lteagesearch").val();
-          }if($(".gteagesearch").val()!=""){
-            temporarysearchs.age.$gte=$(".gteagesearch").val();
-          }
-        }
-        searchs=temporarysearchs;
-        $(".search").modal('hide');
-      });
       function save(){
         studentCollection.save();
       }
       studentCollection.load(function(){
+        var classes=studentCollection.find({},{$aggregate:"class"});
         function show(){
           students=studentCollection.find(searchs,{$orderBy:{number:1}});
           classes=studentCollection.find({},{$aggregate:"class"});
@@ -152,6 +133,28 @@
           }
           $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button>&nbsp&nbsp<button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
         }
+        $(".searchok").click(function(){
+          var temporarysearchs={};
+          for(var i=0;i<classes.length;i++){
+            
+          }
+          if($(".classsearch").val()!=""){
+            temporarysearchs.class=$(".classsearch").val();
+          }if($(".numbersearch").val()!=""){
+            temporarysearchs.number=$(".numbersearch").val();
+          }if($(".namesearch").val()!=""){
+            temporarysearchs.name=$(".namesearch").val();
+          }if($(".lteagesearch").val()!=""||$(".gteagesearch").val()!=""){
+            temporarysearchs.age={};
+            if($(".lteagesearch").val()!=""){
+              temporarysearchs.age.$lte=$(".lteagesearch").val();
+            }if($(".gteagesearch").val()!=""){
+              temporarysearchs.age.$gte=$(".gteagesearch").val();
+            }
+          }
+          searchs=temporarysearchs;
+          $(".search").modal('hide');
+        });
         show();
         setInterval(show,1000);
         $("body").on("click",".class",function(){
