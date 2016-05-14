@@ -129,7 +129,7 @@
           }
           for(var i=0;i<classes.length;i++){
             if($("."+classes[i])){
-              var check=$("#"+classes[i]).prop("checked");
+              var check=$("."+classes[i]).prop("checked");
               $("."+classes[i]).remove();
               $(".classsearchdiv").append("<p class='"+classes[i]+"' display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' checked='"+check+"' class='"+classes[i]+"' />");
             }else{
