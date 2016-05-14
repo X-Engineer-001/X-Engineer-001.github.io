@@ -129,14 +129,13 @@
           }
           for(var i=0;i<classes.length;i++){
             if($("."+classes[i])){
-              var check=$("#"+classes[i]).prop("checked");
-              // console.log(check);
-              // console.log($("#"+classes[i]).prop("checked"));
+              if($("#"+classes[i]).prop("checked")){
+                var check="";
+                var check="checked='ture'";
+              }
               $("."+classes[i]).remove();
-              console.log("<p class='"+classes[i]+"' display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' checked='"+check+"' class='"+classes[i]+"' id='"+classes[i]+"' />");
-              $(".classsearchdiv").append("<p class='"+classes[i]+"' display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' checked='"+check+"' class='"+classes[i]+"' id='"+classes[i]+"' />");
+              $(".classsearchdiv").append("<p class='"+classes[i]+"' display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' "+check+" class='"+classes[i]+"' id='"+classes[i]+"' />");
             }else{
-              console.log("test");
               $(".classsearchdiv").append("<p class='"+classes[i]+"' display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' checked='ture' class='"+classes[i]+"' id='"+classes[i]+"' />");
             }
           }
