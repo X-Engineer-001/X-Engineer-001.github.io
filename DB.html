@@ -9,6 +9,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
+          <td>class</td>
           <td>number</td>
           <td>name</td>
           <td>operation</td>
@@ -94,6 +95,7 @@
       var students=studentCollection.find({},{$orderBy:{number:1}});
       $(".editok").click(function(){
         var newData = {
+          class:$(".classedit").val(),
           number:$(".numberedit").val(),
           name:$(".nameedit").val(),
           age:$(".ageedit").val()
@@ -103,6 +105,7 @@
       });
       $(".addok").click(function(){
         studentCollection.insert({
+          class:$(".classadd").val(),
           number:$(".numberadd").val(),
           name:$(".nameadd").val(),
           age:$(".ageadd").val()
@@ -111,7 +114,9 @@
       });
       $(".searchok").click(function(){
         var temporarysearchs={};
-        if($(".numbersearch").val()!=""){
+        if($(".classsearch").val()!=""){
+          temporarysearchs.class=$(".classsearch").val();
+        }if($(".numbersearch").val()!=""){
           temporarysearchs.number=$(".numbersearch").val();
         }if($(".namesearch").val()!=""){
           temporarysearchs.name=$(".namesearch").val();
@@ -135,12 +140,22 @@
           $("tbody *").remove();
           $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button>&nbsp&nbsp<button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
           for(var i=0;i<students.length;i++){
-            $("tbody").append("<tr><td class='number' data-id='"+students[i]._id+"'>"+students[i].number+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
+            $("tbody").append("<tr><td class='class' data-id='"+students[i]._id+"'>"+students[i].class+"</td><td class='number' data-id='"+students[i]._id+"'>"+students[i].number+"</td><td class='name' data-id='"+students[i]._id+"'>"+students[i].name+"</td><td><button type='button' class='btn btn-warning' data-id='"+students[i]._id+"'>edit</button></td><td><button type='button' class='btn btn-danger' data-id='"+students[i]._id+"'>delete</button></td></tr>");
           }
           $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button>&nbsp&nbsp<button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
         }
         show();
         setInterval(show,1000);
+        $("body").on("click",".class",function(){
+          array=studentCollection.find({_id:$(this).data("id")});
+          student=array[0];
+          $(".informationtext").remove();
+          $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
+          $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
+          $(".informationbody").append("<p class='informationtext'>name:"+student.name+"</p>");
+          $(".informationbody").append("<p class='informationtext'>age:"+student.age+"</p>");
+          $(".information").modal('show');
+        })
         $("body").on("click",".number",function(){
           array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
@@ -165,6 +180,8 @@
           array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           $(".edittext").remove();
+          $(".editbody").append("<p class='edittext'>class</p>");
+          $(".editbody").append("<input type='text' class='edittext classedit' value='"+student.class+"' />");
           $(".editbody").append("<p class='edittext'>number</p>");
           $(".editbody").append("<input type='text' class='edittext numberedit' value='"+student.number+"' />");
           $(".editbody").append("<p class='edittext'>name</p>");
@@ -176,6 +193,8 @@
         })
         $("body").on("click",".addbtn",function(){
           $(".addtext").remove();
+          $(".addbody").append("<p class='addtext'>class</p>");
+          $(".addbody").append("<input type='text' class='addtext classadd' value='0' />");
           $(".addbody").append("<p class='addtext'>number</p>");
           $(".addbody").append("<input type='text' class='addtext numberadd' value='0' />");
           $(".addbody").append("<p class='addtext'>name</p>");
