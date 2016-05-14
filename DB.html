@@ -131,7 +131,7 @@
             if($("#"+classes[i])){
               var check=$("#"+classes[i]).prop("checked");
               $("#"+classes[i]).remove();
-              $(".classsearchdiv").append("<p display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' checked='"+check+"' id='"+classes[i]+"' />");
+              $(".classsearchdiv").append("<p id='"+classes[i]+"' display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' checked='"+check+"' id='"+classes[i]+"' />");
             }else{
               $(".classsearchdiv").append("<p display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' checked='ture' id='"+classes[i]+"' />");
             }
