@@ -79,7 +79,7 @@
             <input type='text' class='searchtext namesearch' value='' />
             <p class='searchtext'>age</p>
             <input type='text' class='searchtext gteagesearch' value='' />～
-            <input type='text' class='searchtext lteagesearch' display='inline' value='' />
+            <input type='text' class='searchtext lteagesearch' value='' />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success searchok">OK</button>
@@ -135,9 +135,9 @@
                 var check="";
               }
               $("."+classes[i]).remove();
-              $(".classsearchdiv").append("<p class='"+classes[i]+"' display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' "+check+" class='"+classes[i]+"' id='"+classes[i]+"' />");
+              $(".classsearchdiv").append("<span class='"+classes[i]+"'>"+classes[i]+"</span><input type='checkbox' "+check+" class='"+classes[i]+"' id='"+classes[i]+"' />");
             }else{
-              $(".classsearchdiv").append("<p class='"+classes[i]+"' display='inline'>"+classes[i]+"</p><input display='inline' type='checkbox' checked='ture' class='"+classes[i]+"' id='"+classes[i]+"' />");
+              $(".classsearchdiv").append("<span class='"+classes[i]+"'>"+classes[i]+"</span><input type='checkbox' checked='ture' class='"+classes[i]+"' id='"+classes[i]+"' />");
             }
           }
           $("tbody").append("<tr><td><button type='button' class='btn btn-success addbtn'>add</button>&nbsp&nbsp<button type='button' class='btn btn-success searchbtn' display='inline'>search</button></td></tr>");
