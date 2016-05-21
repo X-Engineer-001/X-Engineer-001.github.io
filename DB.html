@@ -160,6 +160,7 @@
         studentCollection.save();
         parentsCollection.save();
       }
+      parentsCollection.load(function(){
       studentCollection.load(function(){
         var classes=studentCollection.find({},{$aggregate:"class"});
         function show(){
@@ -286,7 +287,7 @@
           $(".addbody").append("<p class='addtext'>age</p>");
           $(".addbody").append("<input type='text' class='addtext ageadd' value='1' />");
           $(".addbody").append("<select id='addparentsselection'></select>");
-          $("#addparentsselection").append("<option value="">Create parent later</option>");
+          $("#addparentsselection").append("<option value=''>Create parent later</option>");
           for(var i=0;i<parentsCollection.find().lenght;i++){
             $("#addparentsselection").append("<option value='"+parents[i]._id+"'>"+parents[i].name+"</option>");
           }
@@ -307,6 +308,7 @@
           $(".search").modal('show');
         })
       setInterval(save,1000);
+      });
       });
     </script>
   </body>
