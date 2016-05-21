@@ -63,6 +63,21 @@
         </div>
       </div>
     </div>
+    <div id="myModal" class="modal fade parentadd" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">ADD</h4>
+          </div>
+          <div class="modal-body parentaddbody">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success parrentaddok">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="myModal" class="modal fade search" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -102,22 +117,49 @@
           class:$(".classedit").val(),
           number:$(".numberedit").val(),
           name:$(".nameedit").val(),
-          age:$(".ageedit").val()
+          age:$(".ageedit").val(),
+          parent:$("#editparentsselection").val()
         };
         studentCollection.updateById(id,newData);
         $(".edit").modal('hide');
       });
       $(".addok").click(function(){
+        if($("#addparentsselection").val()!=""){
+          studentCollection.insert({
+            class:$(".classadd").val(),
+            number:$(".numberadd").val(),
+            name:$(".nameadd").val(),
+            age:$(".ageadd").val(),
+            parent:$("#addparentsselection").val()
+          });
+        }else{
+          $(".parentaddtext").remove();
+          $(".parentaddbody").append("<p class='parentaddtext'>name</p>");
+          $(".parentaddbody").append("<input type='text' class='parentaddtext parentnameadd' value='name' />");
+          $(".parentaddbody").append("<p class='parentaddtext'>phone</p>");
+          $(".parentaddbody").append("<input type='text' class='parentaddtext parentphoneadd' value='0900000000' />");
+          $(".parentadd").modal('show');
+        }
+        $(".add").modal('hide');
+      });
+      $(".parentaddok").click(function(){
+        var parentid;
+        parentsCollection.insert({
+          name:$(".parentnameadd").val(),
+          phone:$(".parentphoneadd").val()
+        });
         studentCollection.insert({
           class:$(".classadd").val(),
           number:$(".numberadd").val(),
           name:$(".nameadd").val(),
-          age:$(".ageadd").val()
+          age:$(".ageadd").val(),
+          parent:$("#addparentsselection").val()
         });
-        $(".add").modal('hide');
+        $(".parentadd").modal('hide');
       });
       function save(){
         studentCollection.save();
+        parentsCollection.save();
       }
       studentCollection.load(function(){
         var classes=studentCollection.find({},{$aggregate:"class"});
@@ -172,7 +214,7 @@
         show();
         setInterval(show,1000);
         $("body").on("click",".class",function(){
-          array=studentCollection.find({_id:$(this).data("id")});
+          var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
@@ -182,7 +224,7 @@
           $(".information").modal('show');
         })
         $("body").on("click",".number",function(){
-          array=studentCollection.find({_id:$(this).data("id")});
+          var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
@@ -192,7 +234,7 @@
           $(".information").modal('show');
         })
         $("body").on("click",".name",function(){
-          array=studentCollection.find({_id:$(this).data("id")});
+          var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
@@ -202,7 +244,8 @@
           $(".information").modal('show');
         })
         $("body").on("click",".btn-warning",function(){
-          array=studentCollection.find({_id:$(this).data("id")});
+          var array=studentCollection.find({_id:$(this).data("id")});
+          var parents=parentsCollection.find();
           student=array[0];
           $(".edittext").remove();
           $(".editbody").append("<p class='edittext'>class</p>");
@@ -213,23 +256,33 @@
           $(".editbody").append("<input type='text' class='edittext nameedit' value='"+student.name+"' />");
           $(".editbody").append("<p class='edittext'>age</p>");
           $(".editbody").append("<input type='text' class='edittext ageedit' value='"+student.age+"' />");
+          $(".editbody").append("<select id='editparentsselection'></select>");
+          for(var i=0;i<parentsCollection.find().lenght;i++){
+            $("#editparentsselection").append("<option value='"+parents[i]._id+"'>"+parents[i].name+"</option>");
+          }
           id=$(this).data("id");
           $(".edit").modal('show');
         })
         $("body").on("click",".addbtn",function(){
+          var parents=parentsCollection.find();
           $(".addtext").remove();
           $(".addbody").append("<p class='addtext'>class</p>");
-          $(".addbody").append("<input type='text' class='addtext classadd' value='0' />");
+          $(".addbody").append("<input type='text' class='addtext classadd' value='1' />");
           $(".addbody").append("<p class='addtext'>number</p>");
-          $(".addbody").append("<input type='text' class='addtext numberadd' value='0' />");
+          $(".addbody").append("<input type='text' class='addtext numberadd' value='1' />");
           $(".addbody").append("<p class='addtext'>name</p>");
           $(".addbody").append("<input type='text' class='addtext nameadd' value='name' />");
           $(".addbody").append("<p class='addtext'>age</p>");
-          $(".addbody").append("<input type='text' class='addtext ageadd' value='18' />");
+          $(".addbody").append("<input type='text' class='addtext ageadd' value='1' />");
+          $(".addbody").append("<select id='addparentsselection'></select>");
+          $("#addparentsselection").append("<option value="">Create parent later</option>");
+          for(var i=0;i<parentsCollection.find().lenght;i++){
+            $("#addparentsselection").append("<option value='"+parents[i]._id+"'>"+parents[i].name+"</option>");
+          }
           $(".add").modal('show');
         })
         $("body").on("click",".btn-danger",function(){
-          array=studentCollection.find({_id:$(this).data("id")});
+          var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           var ans=confirm("Are you sure to delete '"+student.name+"'?")
           if (ans==true){
