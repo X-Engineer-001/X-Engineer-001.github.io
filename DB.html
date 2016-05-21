@@ -130,7 +130,7 @@
             number:$(".numberadd").val(),
             name:$(".nameadd").val(),
             age:$(".ageadd").val(),
-            parent:$("#addparentsselection").val()
+            parentId:$("#addparentsselection").val()
           });
         }else{
           $(".parentaddtext").remove();
@@ -143,17 +143,16 @@
         $(".add").modal('hide');
       });
       $(".parentaddok").click(function(){
-        var parentid;
-        parentsCollection.insert({
+        var parentid=parentsCollection.insert({
           name:$(".parentnameadd").val(),
           phone:$(".parentphoneadd").val()
-        });
+        }).inserted[0]._id;
         studentCollection.insert({
           class:$(".classadd").val(),
           number:$(".numberadd").val(),
           name:$(".nameadd").val(),
           age:$(".ageadd").val(),
-          parent:$("#addparentsselection").val()
+          parentId:parentid
         });
         $(".parentadd").modal('hide');
       });
@@ -216,31 +215,43 @@
         $("body").on("click",".class",function(){
           var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
+          var parent=parentsCollection.find({_id:$(this).parentId});
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
           $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
           $(".informationbody").append("<p class='informationtext'>name:"+student.name+"</p>");
           $(".informationbody").append("<p class='informationtext'>age:"+student.age+"</p>");
+          $(".informationbody").append("<p class='informationtext'>parent id:"+parent._id+"</p>");
+          $(".informationbody").append("<p class='informationtext'>parent name:"+parent.name+"</p>");
+          $(".informationbody").append("<p class='informationtext'>parent phone:"+parent.phone+"</p>");
           $(".information").modal('show');
         })
         $("body").on("click",".number",function(){
           var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
+          var parent=parentsCollection.find({_id:$(this).parentId});
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
           $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
           $(".informationbody").append("<p class='informationtext'>name:"+student.name+"</p>");
           $(".informationbody").append("<p class='informationtext'>age:"+student.age+"</p>");
+          $(".informationbody").append("<p class='informationtext'>parent id:"+parent._id+"</p>");
+          $(".informationbody").append("<p class='informationtext'>parent name:"+parent.name+"</p>");
+          $(".informationbody").append("<p class='informationtext'>parent phone:"+parent.phone+"</p>");
           $(".information").modal('show');
         })
         $("body").on("click",".name",function(){
           var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
+          var parent=parentsCollection.find({_id:$(this).parentId});
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
           $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
           $(".informationbody").append("<p class='informationtext'>name:"+student.name+"</p>");
           $(".informationbody").append("<p class='informationtext'>age:"+student.age+"</p>");
+          $(".informationbody").append("<p class='informationtext'>parent id:"+parent._id+"</p>");
+          $(".informationbody").append("<p class='informationtext'>parent name:"+parent.name+"</p>");
+          $(".informationbody").append("<p class='informationtext'>parent phone:"+parent.phone+"</p>");
           $(".information").modal('show');
         })
         $("body").on("click",".btn-warning",function(){
