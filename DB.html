@@ -268,7 +268,8 @@
           $(".editbody").append("<input type='text' class='edittext nameedit' value='"+student.name+"' />");
           $(".editbody").append("<p class='edittext'>age</p>");
           $(".editbody").append("<input type='text' class='edittext ageedit' value='"+student.age+"' />");
-          $(".editbody").append("<select id='editparentsselection'></select>");
+          $(".editbody").append("<p class='edittext'>parent</p>");
+          $(".editbody").append("<select class='edittext' id='editparentsselection'></select>");
           for(var i=0;i<parentsCollection.find().lenght;i++){
             $("#editparentsselection").append("<option value='"+parents[i]._id+"'>"+parents[i].name+"</option>");
           }
@@ -286,7 +287,8 @@
           $(".addbody").append("<input type='text' class='addtext nameadd' value='name' />");
           $(".addbody").append("<p class='addtext'>age</p>");
           $(".addbody").append("<input type='text' class='addtext ageadd' value='1' />");
-          $(".addbody").append("<select id='addparentsselection'></select>");
+          $(".addbody").append("<p class='addtext'>parent</p>");
+          $(".addbody").append("<select class='addtext' id='addparentsselection'></select>");
           $("#addparentsselection").append("<option value=''>Create parent later</option>");
           for(var i=0;i<parentsCollection.find().lenght;i++){
             $("#addparentsselection").append("<option value='"+parents[i]._id+"'>"+parents[i].name+"</option>");
