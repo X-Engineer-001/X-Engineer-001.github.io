@@ -274,7 +274,7 @@
           $(".editbody").append("<input type='text' class='edittext ageedit' value='"+student.age+"' />");
           $(".editbody").append("<p class='edittext'>parent</p>");
           $(".editbody").append("<select class='edittext' id='editparentsselection'></select>");
-          for(var i=0;i<parentsCollection.find().lenght;i++){
+          for(var i=0;i<parents.lenght;i++){
             $("#editparentsselection").append("<option value='"+parents[i]._id+"'>"+parents[i].name+"</option>");
           }
           id=$(this).data("id");
@@ -294,7 +294,7 @@
           $(".addbody").append("<p class='addtext'>parent</p>");
           $(".addbody").append("<select class='addtext' id='addparentsselection'></select>");
           $("#addparentsselection").append("<option value=''>Create parent later</option>");
-          for(var i=0;i<parentsCollection.find().lenght;i++){
+          for(var i=0;i<parents.lenght;i++){
             $("#addparentsselection").append("<option value='"+parents[i]._id+"'>"+parents[i].name+"</option>");
           }
           $(".add").modal('show');
