@@ -119,7 +119,7 @@
           number:$(".numberedit").val(),
           name:$(".nameedit").val(),
           age:$(".ageedit").val(),
-          parent:$("#editparentsselection").val()
+          parentId:$("#editparentsselection").val()
         };
         studentCollection.updateById(id,newData);
         $(".edit").modal('hide');
