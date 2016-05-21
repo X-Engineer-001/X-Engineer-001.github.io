@@ -93,6 +93,8 @@
       var db=fdb.db("DB");
       var id=0;
       var studentCollection = db.collection('students');
+      var parentsCollection = db.collection('parents');
+      var teachersCollection = db.collection('teachers');
       var student={};
       var students=studentCollection.find({},{$orderBy:{number:1}});
       $(".editok").click(function(){
