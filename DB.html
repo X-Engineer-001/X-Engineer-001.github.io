@@ -216,7 +216,8 @@
         $("body").on("click",".class",function(){
           var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
-          var parent=parentsCollection.find({_id:$(this).parentId});
+          array=parentsCollection.find({_id:$(this).parentId});
+          parent=array[0];
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
           $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
@@ -230,7 +231,8 @@
         $("body").on("click",".number",function(){
           var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
-          var parent=parentsCollection.find({_id:$(this).parentId});
+          array=parentsCollection.find({_id:$(this).parentId});
+          parent=array[0];
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
           $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
@@ -244,7 +246,8 @@
         $("body").on("click",".name",function(){
           var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
-          var parent=parentsCollection.find({_id:$(this).parentId});
+          array=parentsCollection.find({_id:$(this).parentId});
+          parent=array[0];
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
           $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
