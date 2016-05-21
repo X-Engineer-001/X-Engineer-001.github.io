@@ -218,7 +218,7 @@
           var array=studentCollection.find({_id:$(this).data("id")});
           student=array[0];
           array=parentsCollection.find({_id:student.parentId});
-          parent=array2[0];
+          parent=array[0];
           $(".informationtext").remove();
           $(".informationbody").append("<p class='informationtext'>id:"+student._id+"</p>");
           $(".informationbody").append("<p class='informationtext'>number:"+student.number+"</p>");
